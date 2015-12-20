@@ -1,0 +1,801 @@
+extends layout
+
+block content
+	html
+		head
+			title Empire Four Kingdoms Combat Power Calculator
+			| &#x9;
+			| &#x9;
+			link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+			| &#x9;
+			script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+			| &#x9;
+			script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+		body
+			h3 Empire Four Kingdoms Combat Power Calculator
+			| &#x9;
+			| &#x9;
+			form
+				h4
+					| Battle Type:
+					input#AttackBattle(type='radio', name='battle', onclick='showAtk();', checked='')
+					| Attack
+					| &#x9;&#x9;&#x9;
+					input(type='radio', name='battle', onclick='showDef();')
+					| Defense
+			| &#x9;
+			.container-fluid
+				.row
+					.col-sm-6(id='Attack Units')
+						h4 Attack Units
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Spearman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aSpearman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Maceman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aMaceman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Swordsman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aSwordsman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Archer:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aArcher(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Halberdier:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aHalberdier(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Two-handed Swordman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aTwohandedSwordman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Longbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aLongbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Heavy Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aHeavyCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Spearman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVSpearman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Maceman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVMaceman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Swordsman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVSwordsman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Halberdier:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVHalberdier(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Two-handed Swordman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVTwohandedSwordman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Longbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVLongbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Heavy Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVHeavyCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Traveling Knight:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aTravelingKnight(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Traveling Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aTravelingCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Sentinel:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRoyalSentinel(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Scout:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRoyalScout(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Knight:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRoyalKnight(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRoyalCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Marauder:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aMarauder(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Pyromaniac:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aPyromaniac(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Marauder:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVMarauder(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Pyromaniac:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aVPyromaniac(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Cultist Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRenegadeCultistWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Cultist Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRenegadeCultistBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Saber Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRenegadeSaberWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Swashbuckler:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRenegadeSwashbuckler(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Sail Ripper:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aRenegadeSailRipper(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Flame Bearer:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aFlameBearer(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Composite Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aCompositeBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Lion Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aLionWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Lion Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aLionBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bear Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aBearWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bear Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aBearBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Demon Horror:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aDemonHorror(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Deathly Horror:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#aDeathlyHorror(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						h4 Siege Tools
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Scaling Ladder:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#ScalingLadder(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Siege Tower:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#SiegeTower(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Battering Ram:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#BatteringRam(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Iron Ram:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#IronRam(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Mantlet:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#Mantlet(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Cast Iron Mantlet:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#CastIronMantlet(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						h4 Commander&apos;s Bonus
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Melee soldiers:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#CommanderPATK(type='number', min='0', max='90', defaultvalue='0', value='0')
+								| %
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Ranged soldiers:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-3
+								input#CommanderRATK(type='number', min='0', max='90', defaultvalue='0', value='0')
+								| %
+						| &#x9;&#x9;&#x9;&#x9;
+						#Attack(style='display:none')
+							.row
+								.col-sm-6 Enemy wall reduction:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									| -
+									input#CommanderWall(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Enemy gate reduction:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									| -
+									input#CommanderGate(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						#AttackResult
+							button#CalculateATK(type='button') Calculate Attack
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							button#ResetATK(type='button') Reset
+						br
+						| &#x9;&#x9;&#x9;&#x9;Total Melee Attack: 
+						span#TotalMeleeATK
+						br
+						| &#x9;&#x9;&#x9;&#x9;Total Ranged Attack: 
+						span#TotalRangedATK
+						br
+					| &#x9;&#x9;&#x9;
+					.col-sm-6(id='Defence Units')
+						h4 Defense Units
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Armed citizen:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#Peasant(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Militia:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#Militia(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Spearman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dSpearman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Maceman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dMaceman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Swordsman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dSwordsman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Archer:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dArcher(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Halberdier:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dHalberdier(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Two-handed Swordman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dTwohandedSwordman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Longbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dLongbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Heavy Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dHeavyCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Spearman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVSpearman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Maceman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVMaceman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Swordsman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVSwordsman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Halberdier:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVHalberdier(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Two-handed Swordman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVTwohandedSwordman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Longbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVLongbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Heavy Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVHeavyCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Traveling Knight:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dTravelingKnight(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Traveling Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dTravelingCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Sentinel:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRoyalSentinel(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Scout:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRoyalScout(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Knight:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRoyalKnight(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Royal Crossbowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRoyalCrossbowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Marauder:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dMarauder(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Pyromaniac:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dPyromaniac(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Marauder:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVMarauder(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Veteran Pyromaniac:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dVPyromaniac(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Cultist Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRenegadeCultistWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Cultist Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRenegadeCultistBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Saber Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRenegadeSaberWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Swashbuckler:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRenegadeSwashbuckler(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Renegade Sail Ripper:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dRenegadeSailRipper(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Flame Bearer:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dFlameBearer(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Composite Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dCompositeBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Lion Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dLionWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Lion Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dLionBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bear Warrior:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dBearWarrior(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Bear Bowman:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dBearBowman(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Demon Horror:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dDemonHorror(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						.row
+							.col-sm-6 Deathly Horror:
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.col-sm-1
+								input#dDeathlyHorror(type='number', min='0', defaultvalue='0', value='0')
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						#Defense(style='display:none')
+							h4 Defense Tools
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Hurling Rocks:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#HurlingRocks(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Tar Pitch Kettle:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#TarPitchKettle(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Castle Gate Reinforcement:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#CastleGateReinforcement(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Insulating Mat:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#InsulatingMat(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Flaming Arrows:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#FlamingArrows(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Bulwark:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#Bulwark(type='checkbox')
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							br
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							h4 Castellan Bonus
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Melee soldiers:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#CastellanPDEF(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Ranged soldiers:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#CastellanRDEF(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Wall protection:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#CastellanWall(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Gate protection:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#CastellanGate(type='number', min='0', max='90', defaultvalue='0', value='0')
+									| %
+						| &#x9;&#x9;&#x9;&#x9;
+						#DefenseBonus
+							h4 Defense Bonus
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Melee soldiers:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#SpyPDEF(type='number', min='100', max='999', defaultvalue='100', value='100')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Ranged soldiers:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-3
+									input#SpyRDEF(type='number', min='100', max='999', defaultvalue='100', value='100')
+									| %
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Wall protection:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-4
+									input#SpyWall(type='number', min='0', max='999', defaultvalue='0', value='0')
+									| % (Min: 0%)
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							.row
+								.col-sm-6 Gate protection:
+								| &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+								.col-sm-4
+									input#SpyGate(type='number', min='0', max='999', defaultvalue='0', value='0')
+									| % (Min: 0%)
+						| &#x9;&#x9;&#x9;&#x9;
+						br
+						| &#x9;&#x9;&#x9;&#x9;
+						#DefenceResult
+							button#CalculateDEF(type='button') Calculate Defence
+							| &#x9;&#x9;&#x9;&#x9;&#x9;
+							button#ResetDEF(type='button') Reset
+						br
+						| &#x9;&#x9;&#x9;&#x9;Total Melee Defence: 
+						span#TotalMeleeDEF
+						br
+						| &#x9;&#x9;&#x9;&#x9;Total Ranged Defence: 
+						span#TotalRangedDEF
+						br
+			| &#x9;
+			br
+			| &#x9;
+			br
+			| &#x9;
+			h4 By Blizzardian
+		script(type='text/javascript', src=cpscript)
