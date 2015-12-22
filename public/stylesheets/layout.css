@@ -1,0 +1,33 @@
+* {
+	margin: 0;
+}
+body {
+	margin: 0;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background: url('/images/bgp.jpg'), fixed, center, no-repeat;
+	background-size: cover;
+}
+header {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	background-color: black;
+}
+header h1 {
+	color: white;
+	text-align: center;
+}
+.wrapper {
+	box-sizing: border-box;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 10px;
+	background: white;
+}
+footer {
+	margin: 20px 0;
+}
+a {
+	color: #00B7FF;
+}
