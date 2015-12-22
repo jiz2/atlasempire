@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 	// res.render('index', {
 	// 	title: 'Atlas Empire Home'
 	// });
-	// res.redirect('/weebly');
-	res.redirect('/battle');
+	res.redirect('/weebly');
+	// res.redirect('/battle');
 });
 
 /* GET battlesimulator page. */
