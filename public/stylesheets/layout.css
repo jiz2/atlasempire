@@ -4,7 +4,7 @@
 body {
 	margin: 0;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	background: url('/images/bgp.jpg'), fixed, center, no-repeat;
+	background: url('http://i.imgur.com/tmtazvq.jpg'), fixed, center, no-repeat;
 	background-size: cover;
 }
 header {
